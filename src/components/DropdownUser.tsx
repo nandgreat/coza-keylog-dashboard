@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-import UserOne from '../images/user/user-01.png';
 import DefaultImage from '../images/user/default.jpeg';
 import useLocalStorage from '../hooks/useLocalStorage';
 import { User } from '../models/user';
@@ -11,7 +10,7 @@ import { logout } from '../features/auth/authSlice';
 const DropdownUser = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  const [user, setUser] = useLocalStorage<User>('user_data', { name: "", token: "" });
+  const [user] = useLocalStorage<User>('user_data', { name: "", token: "" });
 
   const dispatch = useDispatch()
 

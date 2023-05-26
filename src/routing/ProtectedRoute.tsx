@@ -1,13 +1,9 @@
-import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
 import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import useLocalStorage from '../hooks/useLocalStorage';
 import { User } from '../models/user';
 
 const ProtectedRoute = () => {
-  const [user, setUser] = useLocalStorage<User>('user_data', { name: "", token: "" });
-
-  const navigate = useNavigate()
+  const [user] = useLocalStorage<User>('user_data', { name: "", token: "" });
 
   // useEffect(() => {
   //   if (user.name == "") navigate('/auth/signin')

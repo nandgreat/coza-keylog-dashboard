@@ -1,11 +1,10 @@
 import { useEffect } from "react";
 import { useGetDetailsQuery } from "../app/services/auth/authService";
-import DefaultImage from '../images/user/default.jpeg';
 
 
 const KeysComponent = () => {
 
-  const { data, isFetching } = useGetDetailsQuery('keys', {
+  const { data } = useGetDetailsQuery('keys', {
     pollingInterval: 0, // 15mins
     refetchOnMountOrArgChange: true,
     refetchOnFocus: true
@@ -55,6 +54,7 @@ const KeysComponent = () => {
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
+
                 {data?.data.map((person: any, index: number) => (
                   <tr key={person.email}>
                     <td className="px-6 py-4 whitespace-nowrap">
@@ -76,6 +76,14 @@ const KeysComponent = () => {
                     </td>
                   </tr>
                 ))}
+
+                {data?.data.length == 0 && (
+                  <tr>
+                    <td className="px-6 py-4 whitespace-nowrap text-left text-sm font-medium">
+                      No Record found
+                    </td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </div>

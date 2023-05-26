@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "react-scripts build",
     "preview": "vite preview"
   },
   "author": {
@@ -23,7 +23,6 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.1",
     "sort-by": "^0.0.2",
-
     "@reduxjs/toolkit": "^1.8.2",
     "axios": "^0.27.2",
     "react-hook-form": "^7.31.3",
@@ -43,5 +42,17 @@
     "tailwindcss": "^3.2.6",
     "vite": "^4.1.0",
     "webpack": "^5.79.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

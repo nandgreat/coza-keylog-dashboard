@@ -3,9 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import { getStorageIem } from '../../utils/utils'
 import { User } from '../../models/user'
 import { authApi } from '../../app/services/auth/authService'
-
-const backendURL = 'http://localhost:8000/api/v1'
-// const backendURL = 'http://127.0.0.1:5000'
+import { BASEURL } from '../../utils/constants'
 
 export const workersList = createAsyncThunk(
   'user/workers',
@@ -27,7 +25,7 @@ export const workersList = createAsyncThunk(
       }
 
       const { data } = await axios.get(
-        `${backendURL}/workers`,
+        `${BASEURL}/workers`,
         config
       )
 
@@ -60,7 +58,7 @@ export const registerUser = createAsyncThunk(
       }
 
       await axios.post(
-        `${backendURL}/api/user/register`,
+        `${BASEURL}/api/user/register`,
         { firstName, email, password },
         config
       )

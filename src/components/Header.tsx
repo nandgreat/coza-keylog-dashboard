@@ -8,20 +8,16 @@ import { useDispatch } from 'react-redux';
 import { useGetDetailsQuery } from '../app/services/auth/authService';
 import { useEffect } from 'react';
 import { setCredentials } from '../features/auth/authSlice';
-import { useAppSelector } from '../app/hook';
-import useLocalStorage from '../hooks/useLocalStorage';
-import { User } from '../models/user';
 
 const Header = (props: {
   sidebarOpen: string | boolean | undefined;
   setSidebarOpen: (arg0: boolean) => void;
 }) => {
 
-  const [user, setUser] = useLocalStorage<User>('user_data', { name: "", token: "" });
   const dispatch = useDispatch()
 
   // automatically authenticate user if token is found
-  const { data, isFetching } = useGetDetailsQuery('userDetails', {
+  const { data } = useGetDetailsQuery('userDetails', {
     pollingInterval: 0, // 15mins
     refetchOnMountOrArgChange: true,
     refetchOnFocus: true

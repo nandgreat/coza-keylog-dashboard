@@ -38,7 +38,7 @@ const SignIn = () => {
         var payload: User = { name: userInfo.data.name, token: userInfo.data.token }
         setUser((previousUser) => ({ ...previousUser, ...payload }))
         setShowAlert({ isVisible: true, message: "Login Successful", type: 'success' });
-        setTimeout(() => navigate('/dashboard'), 2000);
+        setTimeout(() => navigate('/dashboard'), 1000);
       } else {
         navigate('/')
       }
@@ -99,7 +99,7 @@ const SignIn = () => {
 
 
                 <div className="mb-5">
-                  <CustomButton label={'Sign In'} type={'submit'} />
+                  <CustomButton label={'Sign In'} isLoading={loading} type={'submit'} />
                 </div>
 
               </form>

@@ -2,9 +2,9 @@ import axios from 'axios'
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { getStorageIem } from '../../utils/utils'
 import { User } from '../../models/user'
+import { axiosInstance } from '../../api/axios_instance'
+import { BASEURL } from '../../utils/constants'
 
-const backendURL = 'http://localhost:8000/api/v1'
-// const backendURL = 'http://127.0.0.1:5000'
 
 export const dashboardItems = createAsyncThunk(
   'dashboard',
@@ -16,20 +16,8 @@ export const dashboardItems = createAsyncThunk(
       var userData: User = JSON.parse(userString!)
       console.log(userData.name + " ------------------");
 
-      // configure header's Content-Type as JSON
-      const config = {
-        headers: {
-          'Content-Type': 'application/json',
-          "X-Requested-with": "XMLHttpRequest",
-          "Authorization": "Bearer " + userData.token
-        },
-      }
 
-
-      const { data } = await axios.get(
-        `${backendURL}/dashboard/items`,
-        config
-      )
+      const { data } = await axiosInstance.get('/dashboard/items')
 
       console.log(data);
 
@@ -60,7 +48,7 @@ export const registerUser = createAsyncThunk(
       }
 
       await axios.post(
-        `${backendURL}/api/user/register`,
+        `${BASEURL}/api/user/register`,
         { firstName, email, password },
         config
       )

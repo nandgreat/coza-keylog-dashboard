@@ -5,13 +5,12 @@ import { getStorageIem } from '../../../utils/utils';
 export const authApi = createApi({
   reducerPath: 'authApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:8000/api/v1',
-    prepareHeaders: async (headers, { getState }) => {
+    baseUrl: 'https://coza-keylog-backend.awtab.com/api/v1/',
+    prepareHeaders: async (headers) => {
 
       var userString = await getStorageIem("user_data");
 
       var userData: User = JSON.parse(userString!)
-      console.log(userData.name + " ------------------");
 
       const token = userData.token;
       if (token) {
@@ -22,7 +21,7 @@ export const authApi = createApi({
   }),
   endpoints: (build) => ({
     getDetails: build.query({
-      query: (workers:string) => ({
+      query: (workers: string) => ({
         url: workers,
         method: 'GET',
       }),

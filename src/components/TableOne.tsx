@@ -1,24 +1,14 @@
-import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../app/hook";
-import { workersList } from "../features/workers/workers";
 import { useGetDetailsQuery } from "../app/services/auth/authService";
 import DefaultImage from '../images/user/default.jpeg';
 
 
 const WorkersComponent = () => {
 
-
-  const { data, isFetching } = useGetDetailsQuery('workers', {
+  const { data } = useGetDetailsQuery('workers', {
     pollingInterval: 0, // 15mins
     refetchOnMountOrArgChange: true,
     refetchOnFocus: true
-
   })
-
-  useEffect(() => {
-    console.log(data);
-
-  }, [data])
 
 
   return (

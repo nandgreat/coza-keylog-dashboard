@@ -1,4 +1,3 @@
-import { useSelector } from 'react-redux';
 import Breadcrumb from '../components/Breadcrumb';
 import CoverOne from '../images/cover/cover-01.png';
 import userSix from '../images/user/user-06.png';
@@ -12,7 +11,7 @@ const Profile = () => {
 
   const { userInfo } = useAppSelector((state: any) => state.auth)
 
-  const [user, setUser] = useLocalStorage<User>('user_data', { name: "", token: "" });
+  const [user] = useLocalStorage<User>('user_data', { name: "", token: "" });
 
 
   useEffect(() => {

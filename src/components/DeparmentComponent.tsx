@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useGetDetailsQuery } from "../app/services/auth/authService";
-import DefaultImage from '../images/user/default.jpeg';
 
 
 const DepartmentComponents = () => {
@@ -13,7 +12,7 @@ const DepartmentComponents = () => {
   })
 
   useEffect(() => {
-    console.log(data);
+    console.log(isFetching);
 
   }, [data])
 

@@ -1,14 +1,21 @@
-import axios from 'axios';
+import axios, { AxiosInstance } from 'axios';
+import { BASEURL } from '../utils/constants';
 
 const axiosClient = axios.create();
 
-axiosClient.defaults.baseURL = 'http://localhost:8000/api/v1/';
+axiosClient.defaults.baseURL = BASEURL;
 
-axiosClient.defaults.headers = {
-  "Content-Type": "application/json",
-  "X-Requested-with": "XMLHttpRequest",
-  'Accept': 'application/json'
-};
+export const axiosInstance: AxiosInstance = axios.create({
+  baseURL: BASEURL, // Set the base URL for your API
+  headers: {
+    'Content-Type': 'application/json',
+    'X-Requested-With': 'XMLHttpRequest',
+    'Accept': 'application/json',
+  },
+  timeout: 40000,
+  withCredentials: true
+});
+
 
 //All request will wait 2 seconds before timeout
 axiosClient.defaults.timeout = 10000;
@@ -17,3 +24,4 @@ axiosClient.defaults.withCredentials = true;
 
 
 export default axiosClient;
+

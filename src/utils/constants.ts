@@ -1,0 +1,1 @@
+export const BASEURL = 'https://coza-keylog-backend.awtab.com/api/v1/';
